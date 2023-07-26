@@ -1,7 +1,7 @@
 import { Form, FormikProps } from "formik";
 import FormInput from "../shared/FormInput";
 
-const SignUpInnerForm = (props: FormikProps<SignInFormValues>) => {
+const SignUpInnerForm = (props: FormikProps<SignUpFormValues>) => {
   const { handleReset } = props;
 
   return (

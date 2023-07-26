@@ -15,11 +15,20 @@ interface SignUpFormValues {
   password: string;
 }
 
-interface SignInFormProps {}
-interface SignUpFormProps {}
+interface SignInFormProps {
+  setCookie: (
+    name: "login",
+    value: any,
+    options?: CookieSetOptions | undefined
+  ) => void;
+}
+
+interface SignUpFormProps {
+  route: AppRouterInstance;
+}
 
 interface SignUpFormValues {
-  name?: string;
-  email?: string;
-  password?: string;
+  name: string;
+  email: string;
+  password: string;
 }

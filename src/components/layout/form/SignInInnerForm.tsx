@@ -2,7 +2,7 @@ import { Form, FormikProps } from "formik";
 import FormInput from "../shared/FormInput";
 
 const SignInInnerForm = (props: FormikProps<SignInFormValues>) => {
-  const { handleReset } = props;
+  const { handleReset, setFieldError } = props;
 
   return (
     <Form className="space-y-6 " onReset={handleReset}>

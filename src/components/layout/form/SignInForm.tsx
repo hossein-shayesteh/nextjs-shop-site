@@ -2,8 +2,11 @@
 import Image from "next/image";
 import EnhancedSignInForm from "./formAuth/EnhancedSignInForm";
 import Link from "next/link";
+import { useCookies } from "react-cookie";
 
 const SignInForm = () => {
+  const [cookie, setCookie] = useCookies(["login"]);
+
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -20,7 +23,7 @@ const SignInForm = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <EnhancedSignInForm />
+        <EnhancedSignInForm setCookie={setCookie} />
         <p className="mt-10 text-center text-sm text-gray-500">
           Not a member?&nbsp;
           <Link
