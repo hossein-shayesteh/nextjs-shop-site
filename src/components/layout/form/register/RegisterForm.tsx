@@ -1,9 +1,11 @@
 "use client";
 import Image from "next/image";
-import EnhancedSignUpForm from "./formAuth/EnhancedSignUpForm";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
-const SignUpForm = () => {
+import RegisterFormAuth from "./RegisterFormAuth";
+
+const RegisterForm = () => {
   const route = useRouter();
 
   return (
@@ -12,7 +14,7 @@ const SignUpForm = () => {
         <Image
           className="mx-auto h-20 w-auto"
           src="/images/icon.png"
-          alt="Your Company"
+          alt="Clothina logo"
           width={300}
           height={300}
         />
@@ -22,10 +24,19 @@ const SignUpForm = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <EnhancedSignUpForm route={route} />
+        <RegisterFormAuth router={route} />
+        <p className="mt-10 text-center text-sm text-gray-500">
+          Already have a account?&nbsp;
+          <Link
+            href={"/auth/login"}
+            className="font-semibold leading-6 text-gray-600 hover:text-gray-500"
+          >
+            Login from here
+          </Link>
+        </p>
       </div>
     </div>
   );
 };
 
-export default SignUpForm;
+export default RegisterForm;

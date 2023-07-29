@@ -4,31 +4,27 @@ interface FormInput {
   type: string;
 }
 
-interface SignInFormValues {
-  email?: string;
-  password?: string;
+interface LoginFormValues {
+  phone: string;
 }
-
-interface SignUpFormValues {
+interface RegisterFormValues {
   name: string;
-  email: string;
-  password: string;
+  phone: string;
+}
+interface VerifyFormValues {
+  code: string;
+  token?: string;
 }
 
-interface SignInFormProps {
-  setCookie: (
-    name: "login",
-    value: any,
-    options?: CookieSetOptions | undefined
-  ) => void;
+interface LoginFormProps {
+  router: AppRouterInstance;
+  setPhoneVerifyToken: (token: string) => void;
 }
-
-interface SignUpFormProps {
-  route: AppRouterInstance;
+interface RegisterFormProps {
+  router: AppRouterInstance;
 }
-
-interface SignUpFormValues {
-  name: string;
-  email: string;
-  password: string;
+interface VerifyFormProps {
+  router: AppRouterInstance;
+  phoneVerifyToken?: string;
+  clearPhoneVerifyToken: () => void;
 }

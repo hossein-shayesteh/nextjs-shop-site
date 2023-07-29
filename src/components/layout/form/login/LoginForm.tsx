@@ -1,11 +1,20 @@
 "use client";
 import Image from "next/image";
-import EnhancedSignInForm from "./formAuth/EnhancedSignInForm";
 import Link from "next/link";
-import { useCookies } from "react-cookie";
+import { useRouter } from "next/navigation";
 
-const SignInForm = () => {
-  const [cookie, setCookie] = useCookies(["login"]);
+import { useAppDispatch } from "@/redux/hooks";
+import { updatePhoneVerifyToken } from "@/redux/reducers/authentication";
+
+import LoginFormAuth from "./LoginFormAuth";
+
+const LoginForm = () => {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  const setPhoneVerifyToken = (token: string) => {
+    dispatch(updatePhoneVerifyToken(token));
+  };
 
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -13,7 +22,7 @@ const SignInForm = () => {
         <Image
           className="mx-auto h-20 w-auto"
           src="/images/icon.png"
-          alt="Your Company"
+          alt="Clothina logo"
           width={300}
           height={300}
         />
@@ -23,11 +32,14 @@ const SignInForm = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <EnhancedSignInForm setCookie={setCookie} />
+        <LoginFormAuth
+          router={router}
+          setPhoneVerifyToken={setPhoneVerifyToken}
+        />
         <p className="mt-10 text-center text-sm text-gray-500">
           Not a member?&nbsp;
           <Link
-            href="/auth/signup"
+            href={"/auth/register"}
             className="font-semibold leading-6 text-gray-600 hover:text-gray-500"
           >
             Register from here
@@ -38,4 +50,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default LoginForm;

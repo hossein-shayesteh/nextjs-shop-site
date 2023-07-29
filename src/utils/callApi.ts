@@ -1,5 +1,5 @@
 import axios from "axios";
-import ValidationError from "@/components/layout/form/formAuth/validationError";
+import ValidationError from "@/components/layout/form/validationError";
 
 const callApi = () => {
   const axiosInstance = axios.create({ baseURL: "http://localhost:5000/api/" });

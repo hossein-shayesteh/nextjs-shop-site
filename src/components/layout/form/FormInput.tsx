@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Field, ErrorMessage } from "formik";
 
 const FormInput = ({ name, label, type }: FormInput) => {
