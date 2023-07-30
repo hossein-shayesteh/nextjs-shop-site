@@ -27,30 +27,31 @@ const VerifyForm = () => {
     }
   }, []);
 
-  return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <Image
-          className="mx-auto h-20 w-auto"
-          src="/images/icon.png"
-          alt="Clothina logo"
-          width={300}
-          height={300}
-        />
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Verify your phone number
-        </h2>
-      </div>
+  if (phoneVerifyToken)
+    return (
+      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <Image
+            className="mx-auto h-20 w-auto"
+            src="/images/icon.png"
+            alt="Clothina logo"
+            width={300}
+            height={300}
+          />
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            Verify your phone number
+          </h2>
+        </div>
 
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <VerifyFormAuth
-          router={router}
-          phoneVerifyToken={phoneVerifyToken}
-          clearPhoneVerifyToken={clearPhoneVerifyToken}
-        />
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <VerifyFormAuth
+            router={router}
+            phoneVerifyToken={phoneVerifyToken}
+            clearPhoneVerifyToken={clearPhoneVerifyToken}
+          />
+        </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default VerifyForm;

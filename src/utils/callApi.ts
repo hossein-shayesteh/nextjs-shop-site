@@ -5,7 +5,10 @@ const callApi = () => {
   const axiosInstance = axios.create({ baseURL: "http://localhost:5000/api/" });
 
   axiosInstance.interceptors.request.use(
-    (config) => config,
+    (config) => {
+      config.withCredentials = true;
+      return config;
+    },
     (err) => Promise.reject(err)
   );
 
