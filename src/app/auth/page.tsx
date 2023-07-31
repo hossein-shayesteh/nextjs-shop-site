@@ -1,4 +1,2 @@
-import { redirect } from "next/navigation";
-
-const Auth = () => redirect("/auth/register");
+const Auth = () => {};
 export default Auth;
