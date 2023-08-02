@@ -13,7 +13,7 @@ const RegisterForm = () => {
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <Image
           className="mx-auto h-20 w-auto"
-          src="/images/icon.png"
+          src="/images/icon.svg"
           alt="Clothina logo"
           width={300}
           height={300}

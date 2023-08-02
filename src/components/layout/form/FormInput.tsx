@@ -4,7 +4,7 @@ import { Field, ErrorMessage } from "formik";
 
 const FormInput = ({ name, label, type }: FormInput) => {
   return (
-    <div>
+    <div className={" my-4"}>
       <label
         htmlFor={name}
         className="block text-sm font-medium leading-6 text-gray-900"
