@@ -1,15 +1,16 @@
 import { FormikProps } from "formik";
-import FormInput from "@/components/layout/form/FormInput";
+import Input from "@/components/layout/form/Input";
 import { Form } from "formik";
+import Textarea from "@/components/layout/form/Textarea";
 
 const ModalInnerForm = (props: FormikProps<ModalFormValues>) => {
   const { handleReset } = props;
 
   return (
     <Form onReset={handleReset}>
-      <FormInput label={"Product Name"} type={"text"} name={"name"} />
-      <FormInput label={"Price"} type={"number"} name={"price"} />
-      <FormInput label={"Image"} type={"text"} name={"image"} />
+      <Input label={"Product Name"} type={"text"} name={"name"} />
+      <Input label={"Price"} type={"number"} name={"price"} />
+      <Textarea name={"description"} label={"Description"} />
 
       <button
         type="submit"

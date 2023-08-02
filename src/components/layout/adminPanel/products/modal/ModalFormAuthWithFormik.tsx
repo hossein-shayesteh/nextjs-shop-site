@@ -6,14 +6,14 @@ import ModalInnerForm from "@/components/layout/adminPanel/products/modal/ModalI
 const ModalValidationSchema = Yup.object().shape({
   name: Yup.string().required("Code is required"),
   price: Yup.number().required("Price is required"),
-  image: Yup.string().required("Image is required"),
+  description: Yup.string().required("Image is required"),
 });
 
 const VerifyFormAuth = withFormik<ModalFormProps, ModalFormValues>({
   mapPropsToValues: () => ({
     name: "",
     price: 0,
-    image: "",
+    description: "",
   }),
 
   validationSchema: ModalValidationSchema,

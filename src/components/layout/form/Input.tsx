@@ -2,7 +2,7 @@ import React from "react";
 
 import { Field, ErrorMessage } from "formik";
 
-const FormInput = ({ name, label, type }: FormInput) => {
+const Input = ({ name, label, type }: Input) => {
   return (
     <div className={" my-4"}>
       <label
@@ -30,4 +30,4 @@ const FormInput = ({ name, label, type }: FormInput) => {
   );
 };
 
-export default FormInput;
+export default Input;

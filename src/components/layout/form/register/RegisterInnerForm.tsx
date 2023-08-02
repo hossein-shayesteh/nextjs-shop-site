@@ -1,13 +1,13 @@
 import { Form, FormikProps } from "formik";
-import FormInput from "../FormInput";
+import Input from "../Input";
 
 const RegisterInnerForm = (props: FormikProps<RegisterFormValues>) => {
   const { handleReset } = props;
 
   return (
     <Form className="space-y-6 " onReset={handleReset}>
-      <FormInput label="Name" name="name" type="name" />
-      <FormInput label="Phone number" name="phone" type="phone" />
+      <Input label="Name" name="name" type="name" />
+      <Input label="Phone number" name="phone" type="phone" />
       <div>
         <button
           type="submit"

@@ -1,13 +1,13 @@
 import { Form, FormikProps } from "formik";
 
-import FormInput from "../FormInput";
+import Input from "../Input";
 
 const VerifyInnerForm = (props: FormikProps<VerifyFormValues>) => {
   const { handleReset } = props;
 
   return (
     <Form className="space-y-6 " onReset={handleReset}>
-      <FormInput label="Code" name="code" type="text" />
+      <Input label="Code" name="code" type="text" />
       <div>
         <button
           type="submit"

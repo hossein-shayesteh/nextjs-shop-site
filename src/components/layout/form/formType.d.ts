@@ -1,7 +1,12 @@
-interface FormInput {
+interface Input {
   name: string;
   label: string;
   type: string;
+}
+interface Textarea {
+  name: string;
+  label: string;
+  rows?: number;
 }
 
 interface LoginFormValues {
