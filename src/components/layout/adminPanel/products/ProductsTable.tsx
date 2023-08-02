@@ -11,9 +11,9 @@ const tableHeadItems = [
 ];
 
 const ProductsTable = ({
-  setShow,
+  setModalVisibility,
 }: {
-  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalVisibility: (arg: boolean) => void;
 }) => {
   return (
     <>
@@ -24,7 +24,7 @@ const ProductsTable = ({
             className=" ml-4 inline-flex justify-center rounded-md border border-blue-300 bg-blue-100  px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             type="button"
             onClick={() => {
-              setShow(true);
+              setModalVisibility(true);
             }}
           >
             Add Product

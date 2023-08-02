@@ -1,21 +1,29 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import ProductsTable from "@/components/layout/adminPanel/products/ProductsTable";
 import Modal from "@/components/UI/Modal";
 import ModalFormAuthWithFormik from "@/components/layout/adminPanel/products/modal/ModalFormAuthWithFormik";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const AdminDashboardProducts = () => {
-  const [modalIsShown, setModalIsShown] = useState(false);
+  const router = useRouter();
+
+  const isModalVisible = useSearchParams().get("modal") === "true";
+  const setModalVisibility = (arg: boolean) => {
+    if (arg) router.push("?modal=true");
+    if (!arg) router.back();
+  };
+
   return (
     <>
       <Modal
-        isOpen={modalIsShown}
-        setIsOpen={setModalIsShown}
+        isOpen={isModalVisible}
+        setIsOpen={setModalVisibility}
         modalHeader={"Add product"}
       >
         <ModalFormAuthWithFormik />
       </Modal>
-      <ProductsTable setShow={setModalIsShown} />
+      <ProductsTable setModalVisibility={setModalVisibility} />
     </>
   );
 };

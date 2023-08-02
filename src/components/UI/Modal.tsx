@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 
 interface Modal {
   isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen: (arg: boolean) => void;
   modalHeader: string;
   children: React.ReactNode;
 }
