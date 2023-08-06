@@ -3,8 +3,8 @@ import { products } from "@/components/layout/adminPanel/products/Dummy_PRODUCTS
 import ProductsTableItems from "@/components/layout/adminPanel/products/ProductsTableItems";
 
 const tableHeadItems = [
-  { id: "1", title: "Image" },
   { id: "2", title: "Product" },
+  { id: "1", title: "description" },
   { id: "3", title: "Price" },
   { id: "4", title: "" },
   { id: "5", title: "" },
@@ -46,7 +46,7 @@ const ProductsTable = ({
               <ProductsTableItems
                 key={product.id}
                 title={product.title}
-                image={product.image}
+                description={product.description}
                 price={product.price}
                 remove={product.remove}
                 edit={product.edit}
