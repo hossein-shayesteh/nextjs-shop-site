@@ -21,7 +21,7 @@ const AdminDashboardProducts = () => {
         setIsOpen={setModalVisibility}
         modalHeader={"Add product"}
       >
-        <ModalFormAuthWithFormik />
+        <ModalFormAuthWithFormik router={router} />
       </Modal>
       <ProductsTable setModalVisibility={setModalVisibility} />
     </>

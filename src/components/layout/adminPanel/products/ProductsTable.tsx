@@ -1,6 +1,8 @@
 import React from "react";
-import { products } from "@/components/layout/adminPanel/products/Dummy_PRODUCTS";
 import ProductsTableItems from "@/components/layout/adminPanel/products/ProductsTableItems";
+import useSWR from "swr";
+import { getProducts } from "@/utils/products";
+import Loading from "@/components/UI/Loading";
 
 const tableHeadItems = [
   { id: "2", title: "Product" },
@@ -15,6 +17,9 @@ const ProductsTable = ({
 }: {
   setModalVisibility: (arg: boolean) => void;
 }) => {
+  const { data, error, isLoading } = useSWR("product-list", getProducts);
+  const products: ProductList[] | undefined = data?.data?.data;
+
   return (
     <>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -42,19 +47,21 @@ const ProductsTable = ({
             </tr>
           </thead>
           <tbody>
-            {products.map((product) => (
-              <ProductsTableItems
-                key={product.id}
-                title={product.title}
-                description={product.description}
-                price={product.price}
-                remove={product.remove}
-                edit={product.edit}
-              />
-            ))}
+            {products &&
+              products.map((product) => (
+                <ProductsTableItems
+                  key={product.id}
+                  title={product.title}
+                  description={product.body}
+                  price={product.price}
+                  remove="#"
+                  edit="#"
+                />
+              ))}
           </tbody>
         </table>
       </div>
+      {isLoading && <Loading className={"mt-40"} />}
     </>
   );
 };

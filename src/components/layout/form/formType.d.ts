@@ -9,6 +9,14 @@ interface Textarea {
   rows?: number;
 }
 
+interface Select {
+  name: string;
+  label: string;
+  options: {
+    title: string;
+    value: string;
+  }[];
+}
 interface LoginFormValues {
   phone: string;
 }

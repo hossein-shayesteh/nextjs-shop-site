@@ -2,6 +2,7 @@ import { FormikProps } from "formik";
 import Input from "@/components/layout/form/Input";
 import { Form } from "formik";
 import Textarea from "@/components/layout/form/Textarea";
+import Select from "@/components/layout/form/Select";
 
 const ModalInnerForm = (props: FormikProps<ModalFormValues>) => {
   const { handleReset } = props;
@@ -10,6 +11,15 @@ const ModalInnerForm = (props: FormikProps<ModalFormValues>) => {
     <Form onReset={handleReset}>
       <Input label={"Product Name"} type={"text"} name={"name"} />
       <Input label={"Price"} type={"number"} name={"price"} />
+      <Select
+        name={"category"}
+        label={"Category"}
+        options={[
+          { title: "Home", value: "home" },
+          { title: "Technology", value: "technology" },
+          { title: "Cloth", value: "cloth" },
+        ]}
+      />
       <Textarea name={"description"} label={"Description"} />
 
       <button
