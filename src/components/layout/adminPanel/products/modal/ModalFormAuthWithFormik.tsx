@@ -1,7 +1,5 @@
 import { withFormik } from "formik";
 import * as Yup from "yup";
-import { toast } from "react-toastify";
-
 import ModalInnerForm from "@/components/layout/adminPanel/products/modal/ModalInnerForm";
 import callApi from "@/utils/callApi";
 
