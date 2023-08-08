@@ -11,31 +11,33 @@ const ModalValidationSchema = Yup.object().shape({
   description: Yup.string().required("Description is required"),
 });
 
-const VerifyFormAuth = withFormik<ModalFormProps, ModalFormValues>({
-  mapPropsToValues: () => ({
-    name: "",
-    price: 0,
-    category: "",
-    description: "",
-  }),
+const VerifyFormAuth = withFormik<ModalFormProps, CreateProductModalFormValues>(
+  {
+    mapPropsToValues: () => ({
+      name: "",
+      price: 0,
+      category: "",
+      description: "",
+    }),
 
-  validationSchema: ModalValidationSchema,
-  handleSubmit: async (values, { props }) => {
-    try {
-      const res = await callApi().post("/products/create", {
-        ...values,
-        body: values.description,
-        category: values.category,
-        title: values.name,
-      });
-      if (res.status === 200) {
-        notifySuccess("Product added.");
-        props.router.back();
+    validationSchema: ModalValidationSchema,
+    handleSubmit: async (values, { props }) => {
+      try {
+        const res = await callApi().post("/products/create", {
+          ...values,
+          body: values.description,
+          category: values.category,
+          title: values.name,
+        });
+        if (res.status === 200) {
+          notifySuccess("Product added.");
+          props.router.back();
+        }
+      } catch (e: any) {
+        console.log(e);
       }
-    } catch (e: any) {
-      console.log(e);
-    }
-  },
-})(ModalInnerForm);
+    },
+  }
+)(ModalInnerForm);
 
 export default VerifyFormAuth;

@@ -4,7 +4,9 @@ import { Form } from "formik";
 import Textarea from "@/components/layout/form/Textarea";
 import Select from "@/components/layout/form/Select";
 
-const ModalInnerForm = (props: FormikProps<CreateProductModalFormValues>) => {
+const EditProductInnerForm = (
+  props: FormikProps<CreateProductModalFormValues>
+) => {
   const { handleReset } = props;
 
   return (
@@ -26,10 +28,10 @@ const ModalInnerForm = (props: FormikProps<CreateProductModalFormValues>) => {
         type="submit"
         className="inline-flex justify-center rounded-md border border-blue-300 bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
       >
-        Add
+        Edit
       </button>
     </Form>
   );
 };
 
-export default ModalInnerForm;
+export default EditProductInnerForm;

@@ -7,6 +7,7 @@ import { removeLoginToken } from "@/utils/auth";
 
 const Panel = () => {
   const { user, error, isLoading } = useAuth();
+  console.log(user);
   const router = useRouter();
 
   const handleLogout = async () => {

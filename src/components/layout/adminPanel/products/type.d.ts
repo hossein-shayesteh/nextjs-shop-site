@@ -1,9 +1,21 @@
-interface ModalFormValues {
+interface CreateProductModalFormValues {
   name: string;
   price: number;
   description: string;
   category: string;
 }
+interface EditProductModalFormValues {
+  name: string;
+  price: number;
+  description: string;
+  category: string;
+}
+interface EditProductModalFormProps extends EditProductModalFormValues {
+  router: AppRouterInstance;
+  mutateProducts: KeyedMutator<AxiosResponse<any, any>>;
+  id: number;
+}
+
 interface ModalFormProps {
   router: AppRouterInstance;
 }

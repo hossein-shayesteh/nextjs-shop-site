@@ -5,6 +5,7 @@ import callApi from "@/utils/callApi";
 import { notifySuccess } from "@/components/UI/toast";
 import { KeyedMutator } from "swr";
 import { AxiosResponse } from "axios";
+import { useRouter } from "next/navigation";
 
 interface ProductsTableItemsProps {
   description: string;
@@ -21,6 +22,7 @@ const ProductsTableItems = ({
   id,
 }: ProductsTableItemsProps) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const router = useRouter();
 
   const handleDelete = async () => {
     try {
@@ -64,7 +66,10 @@ const ProductsTableItems = ({
           </button>
         </td>
         <td className="px-6 py-4">
-          <button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
+          <button
+            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            onClick={() => router.push(`products/${id}/edit`)}
+          >
             Edit
           </button>
         </td>
