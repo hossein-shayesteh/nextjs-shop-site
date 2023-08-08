@@ -1,7 +1,8 @@
 import { withFormik } from "formik";
 import * as Yup from "yup";
-import ModalInnerForm from "@/components/layout/adminPanel/products/modal/ModalInnerForm";
+import ModalInnerForm from "@/components/layout/adminPanel/products/addProductModal/ModalInnerForm";
 import callApi from "@/utils/callApi";
+import { notifySuccess } from "@/components/UI/toast";
 
 const ModalValidationSchema = Yup.object().shape({
   name: Yup.string().required("Code is required"),
@@ -28,6 +29,7 @@ const VerifyFormAuth = withFormik<ModalFormProps, ModalFormValues>({
         title: values.name,
       });
       if (res.status === 200) {
+        notifySuccess("Product added.");
         props.router.back();
       }
     } catch (e: any) {

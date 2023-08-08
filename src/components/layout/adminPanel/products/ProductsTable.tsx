@@ -1,12 +1,14 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import ProductsTableItems from "@/components/layout/adminPanel/products/ProductsTableItems";
 import useSWR from "swr";
-import { getProducts } from "@/utils/products";
+import { getProductsFetcher } from "@/utils/products";
 import Loading from "@/components/UI/Loading";
+import ReactCustomPaginate from "@/components/UI/ReactCustomPaginate";
 
 const tableHeadItems = [
   { id: "2", title: "Product" },
-  { id: "1", title: "description" },
+  { id: "1", title: "description", className: " hidden lg:block" },
   { id: "3", title: "Price" },
   { id: "4", title: "" },
   { id: "5", title: "" },
@@ -17,8 +19,19 @@ const ProductsTable = ({
 }: {
   setModalVisibility: (arg: boolean) => void;
 }) => {
-  const { data, error, isLoading } = useSWR("product-list", getProducts);
+  const [page, setPage] = useState(1);
+
+  const { data, error, isLoading, mutate } = useSWR(
+    { page: page, perPage: 5 },
+    getProductsFetcher
+  );
+
   const products: ProductList[] | undefined = data?.data?.data;
+  const totalPage = data?.data?.total_page;
+
+  const handlePageChange = ({ selected }: { selected: number }) => {
+    setPage(selected + 1);
+  };
 
   return (
     <>
@@ -40,7 +53,11 @@ const ProductsTable = ({
           <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               {tableHeadItems.map((item) => (
-                <th scope="col" className="px-6 py-3" key={item.id}>
+                <th
+                  scope="col"
+                  className={`px-6 py-3 ${item.className}`}
+                  key={item.id}
+                >
                   {item.title}
                 </th>
               ))}
@@ -50,18 +67,25 @@ const ProductsTable = ({
             {products &&
               products.map((product) => (
                 <ProductsTableItems
+                  mutateProducts={mutate}
                   key={product.id}
+                  id={product.id}
                   title={product.title}
                   description={product.body}
                   price={product.price}
-                  remove="#"
-                  edit="#"
                 />
               ))}
           </tbody>
         </table>
       </div>
       {isLoading && <Loading className={"mt-40"} />}
+      {products && (
+        <ReactCustomPaginate
+          pageCount={totalPage}
+          page={page}
+          onPageChange={handlePageChange}
+        />
+      )}
     </>
   );
 };
