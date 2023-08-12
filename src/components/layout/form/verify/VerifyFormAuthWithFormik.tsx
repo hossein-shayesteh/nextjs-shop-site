@@ -25,13 +25,13 @@ const VerifyFormAuthWithFormik = withFormik<VerifyFormProps, VerifyFormValues>({
       const res = await callApi().post("/auth/login/verify-phone", values);
       if (res.status === 200) {
         await storeLoginToken(res?.data?.user?.token, 30);
-        await props.router.push("/panel");
+        await props.router.push("/admin");
         props.clearPhoneVerifyToken();
       }
     } catch (e: any) {
       if (e instanceof ValidationError) {
         Object.entries(e.messages).forEach(([key, value]: any) =>
-          setFieldError(key, value as string),
+          setFieldError(key, value as string)
         );
       }
     }
