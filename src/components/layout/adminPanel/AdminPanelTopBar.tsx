@@ -6,9 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const userNavigation = [
-  { name: "Your Profile", href: "#" },
+  { name: "Home", href: "/" },
   { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
+  { name: "Sign out", href: "/auth/logout" },
 ];
 
 const AdminPanelTopBar = ({

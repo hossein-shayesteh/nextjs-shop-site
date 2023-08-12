@@ -1,7 +1,7 @@
 "use client";
 import useAuth from "@/hooks/useAuth";
 import Loading from "@/components/UI/Loading";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { removeLoginToken } from "@/utils/auth";
 
