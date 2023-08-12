@@ -10,7 +10,7 @@ import {
   updatePhoneVerifyToken,
 } from "@/redux/reducers/authentication";
 
-import VerifyFormAuth from "@/components/layout/form/verify/VerifyFormAuth";
+import VerifyFormAuthWithFormik from "@/components/layout/form/verify/VerifyFormAuthWithFormik";
 
 const VerifyForm = () => {
   const router = useRouter();
@@ -44,7 +44,7 @@ const VerifyForm = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <VerifyFormAuth
+          <VerifyFormAuthWithFormik
             router={router}
             phoneVerifyToken={phoneVerifyToken}
             clearPhoneVerifyToken={clearPhoneVerifyToken}

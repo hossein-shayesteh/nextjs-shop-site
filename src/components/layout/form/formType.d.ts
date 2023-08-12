@@ -1,15 +1,15 @@
-interface Input {
+interface InputProps {
   name: string;
   label: string;
   type: string;
 }
-interface Textarea {
+interface TextareaProps {
   name: string;
   label: string;
   rows?: number;
 }
 
-interface Select {
+interface SelectProps {
   name: string;
   label: string;
   options: {

@@ -2,7 +2,7 @@ import React from "react";
 
 import { Field, ErrorMessage } from "formik";
 
-const Textarea = ({ name, label, rows = 3 }: Textarea) => {
+const Textarea = ({ name, label, rows = 3 }: TextareaProps) => {
   return (
     <div className={" my-4"}>
       <label

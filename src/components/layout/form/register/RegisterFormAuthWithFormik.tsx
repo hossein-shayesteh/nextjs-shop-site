@@ -15,7 +15,10 @@ const registerValidationSchema = Yup.object().shape({
     .matches(phoneRegExp, "The phone format is not correct"),
 });
 
-const RegisterFormAuth = withFormik<RegisterFormProps, RegisterFormValues>({
+const RegisterFormAuthWithFormik = withFormik<
+  RegisterFormProps,
+  RegisterFormValues
+>({
   mapPropsToValues: () => ({
     name: "",
     phone: "",
@@ -31,11 +34,11 @@ const RegisterFormAuth = withFormik<RegisterFormProps, RegisterFormValues>({
     } catch (e: any) {
       if (e instanceof ValidationError) {
         Object.entries(e.messages).forEach(([key, value]: any) =>
-          setFieldError(key, value as string)
+          setFieldError(key, value as string),
         );
       }
     }
   },
 })(RegisterInnerForm);
 
-export default RegisterFormAuth;
+export default RegisterFormAuthWithFormik;

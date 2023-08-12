@@ -4,7 +4,7 @@ import * as Yup from "yup";
 
 import LoginInnerForm from "./LoginInnerForm";
 import callApi from "@/utils/callApi";
-import { phoneRegExp } from "@/components/layout/form/register/RegisterFormAuth";
+import { phoneRegExp } from "@/components/layout/form/register/RegisterFormAuthWithFormik";
 
 const loginValidationSchema = Yup.object().shape({
   phone: Yup.string()
@@ -12,7 +12,7 @@ const loginValidationSchema = Yup.object().shape({
     .matches(phoneRegExp, "The Phone format is not correct"),
 });
 
-const LoginFormAuth = withFormik<LoginFormProps, LoginFormValues>({
+const LoginFormAuthWithFormik = withFormik<LoginFormProps, LoginFormValues>({
   mapPropsToValues: () => ({
     phone: "",
   }),
@@ -28,11 +28,11 @@ const LoginFormAuth = withFormik<LoginFormProps, LoginFormValues>({
     } catch (e: any) {
       if (e instanceof ValidationError) {
         Object.entries(e.messages).forEach(([key, value]: any) =>
-          setFieldError(key, value as string)
+          setFieldError(key, value as string),
         );
       }
     }
   },
 })(LoginInnerForm);
 
-export default LoginFormAuth;
+export default LoginFormAuthWithFormik;

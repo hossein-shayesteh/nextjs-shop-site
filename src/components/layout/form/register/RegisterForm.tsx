@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-import RegisterFormAuth from "./RegisterFormAuth";
+import RegisterFormAuthWithFormik from "./RegisterFormAuthWithFormik";
 
 const RegisterForm = () => {
   const route = useRouter();
@@ -24,7 +24,7 @@ const RegisterForm = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <RegisterFormAuth router={route} />
+        <RegisterFormAuthWithFormik router={route} />
         <p className="mt-10 text-center text-sm text-gray-500">
           Already have a account?&nbsp;
           <Link

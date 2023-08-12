@@ -13,7 +13,7 @@ const verifyValidationSchema = Yup.object().shape({
     .length(6, "Code must be exactly 6 characters"),
 });
 
-const VerifyFormAuth = withFormik<VerifyFormProps, VerifyFormValues>({
+const VerifyFormAuthWithFormik = withFormik<VerifyFormProps, VerifyFormValues>({
   mapPropsToValues: (props) => ({
     code: "",
     token: props.phoneVerifyToken,
@@ -31,11 +31,11 @@ const VerifyFormAuth = withFormik<VerifyFormProps, VerifyFormValues>({
     } catch (e: any) {
       if (e instanceof ValidationError) {
         Object.entries(e.messages).forEach(([key, value]: any) =>
-          setFieldError(key, value as string)
+          setFieldError(key, value as string),
         );
       }
     }
   },
 })(VerifyInnerForm);
 
-export default VerifyFormAuth;
+export default VerifyFormAuthWithFormik;

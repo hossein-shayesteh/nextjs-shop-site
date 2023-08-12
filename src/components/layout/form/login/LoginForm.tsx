@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/redux/hooks";
 import { updatePhoneVerifyToken } from "@/redux/reducers/authentication";
 
-import LoginFormAuth from "./LoginFormAuth";
+import LoginFormAuthWithFormik from "./LoginFormAuthWithFormik";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -32,7 +32,7 @@ const LoginForm = () => {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <LoginFormAuth
+        <LoginFormAuthWithFormik
           router={router}
           setPhoneVerifyToken={setPhoneVerifyToken}
         />

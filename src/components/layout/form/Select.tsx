@@ -2,7 +2,7 @@ import React from "react";
 
 import { Field, ErrorMessage } from "formik";
 
-const Textarea = ({ name, label, options }: Select) => {
+const Textarea = ({ name, label, options }: SelectProps) => {
   return (
     <div className={" my-4"}>
       <label

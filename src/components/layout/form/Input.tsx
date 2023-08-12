@@ -2,7 +2,7 @@ import React from "react";
 
 import { Field, ErrorMessage } from "formik";
 
-const Input = ({ name, label, type }: Input) => {
+const Input = ({ name, label, type }: InputProps) => {
   return (
     <div className={" my-4"}>
       <label
