@@ -2,7 +2,7 @@
 import EditProductFormAuthWithFormik from "@/components/layout/adminPanel/products/editProduct/EditProductFormAuthWithFormik";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import { getProductsFetcher } from "@/utils/products";
+import { fetchProducts } from "@/utils/products";
 
 import Loading from "@/components/UI/Loading";
 
@@ -10,8 +10,8 @@ const EditProduct = ({ params }: { params: { productId: string } }) => {
   const router = useRouter();
 
   const { data, error, isLoading, mutate } = useSWR(
-    { page: 1, perPage: 10 },
-    getProductsFetcher
+    { currentPage: 1, itemsPerPage: 10 },
+    fetchProducts,
   );
   const products = data?.data.data as ProductList[];
 
@@ -21,7 +21,7 @@ const EditProduct = ({ params }: { params: { productId: string } }) => {
   // Check if products array is defined before filtering
   if (products) {
     const [{ title, body, price, category, id }] = products.filter(
-      (product) => String(product.id) === params.productId
+      (product) => String(product.id) === params.productId,
     );
     return (
       <div className={" lg:px-20"}>

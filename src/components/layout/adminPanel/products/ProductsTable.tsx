@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import ProductsTableItems from "@/components/layout/adminPanel/products/ProductsTableItems";
 import useSWR from "swr";
-import { getProductsFetcher } from "@/utils/products";
+import { fetchProducts } from "@/utils/products";
 import Loading from "@/components/UI/Loading";
 import ReactCustomPaginate from "@/components/UI/ReactCustomPaginate";
 
@@ -22,8 +22,8 @@ const ProductsTable = ({
   const [page, setPage] = useState(1);
 
   const { data, error, isLoading, mutate } = useSWR(
-    { page: page, perPage: 5 },
-    getProductsFetcher
+    { currentPage: page, itemsPerPage: 5 },
+    fetchProducts,
   );
 
   const products: ProductList[] | undefined = data?.data?.data;
