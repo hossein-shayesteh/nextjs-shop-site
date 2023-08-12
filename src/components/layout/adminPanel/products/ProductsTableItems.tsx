@@ -2,7 +2,7 @@
 import DeleteConfirmationModal from "@/components/layout/adminPanel/products/DeleteConfirmationModal";
 import { useState } from "react";
 import callApi from "@/utils/callApi";
-import { notifySuccess } from "@/components/UI/toast";
+import notify from "@/components/UI/toast";
 import { KeyedMutator } from "swr";
 import { AxiosResponse } from "axios";
 import { useRouter } from "next/navigation";
@@ -30,7 +30,7 @@ const ProductsTableItems = ({
       if (res.status === 200) {
         await mutateProducts();
         setIsDeleteModalOpen(false);
-        notifySuccess("Product delete successfully");
+        notify("Product delete successfully", "success");
       }
     } catch (e: any) {
       console.log(e);

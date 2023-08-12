@@ -1,13 +1,13 @@
 import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-interface Modal {
+interface ModalProps {
   isOpen: boolean;
   setIsOpen: (arg: boolean) => void;
   modalHeader: string;
   children: React.ReactNode;
 }
-const Modal = ({ isOpen, setIsOpen, modalHeader, children }: Modal) => {
+const Modal = ({ isOpen, setIsOpen, modalHeader, children }: ModalProps) => {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>

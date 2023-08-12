@@ -1,8 +1,8 @@
-interface Loading {
+interface LoadingProps {
   className?: string;
 }
 
-const Loading = ({ className }: Loading) => {
+const Loading = ({ className }: LoadingProps) => {
   return (
     <div role="status" className={`w-full flex justify-center ${className}`}>
       <svg

@@ -1,7 +1,7 @@
 import { withFormik } from "formik";
 import * as Yup from "yup";
 import callApi from "@/utils/callApi";
-import { notifySuccess } from "@/components/UI/toast";
+import notify from "@/components/UI/toast";
 import EditProductInnerForm from "@/components/layout/adminPanel/products/editProduct/EditProductInnerForm";
 
 const EditProductValidationSchema = Yup.object().shape({
@@ -32,7 +32,7 @@ const EditProductFormAuthWithFormik = withFormik<
         title: values.name,
       });
       if (res.status === 200) {
-        notifySuccess("Product edited.");
+        notify("Product edited.", "success");
         props.mutateProducts();
         props.router.back();
       }
