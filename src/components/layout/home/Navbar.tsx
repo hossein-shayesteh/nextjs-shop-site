@@ -4,6 +4,7 @@ import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
+import useAuth from "@/hooks/useAuth";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -14,6 +15,7 @@ const navigation = [
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, isLoading } = useAuth();
 
   return (
     <div className="bg-white">
@@ -56,12 +58,22 @@ const Navbar = () => {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Link
-              href={"/auth/login"}
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              Log in <span aria-hidden="true">&rarr;</span>
-            </Link>
+            {!user && !isLoading && (
+              <Link
+                href={"/auth/login"}
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                Log in <span aria-hidden="true">&rarr;</span>
+              </Link>
+            )}
+            {user && !isLoading && (
+              <Link
+                href={"/admin"}
+                className=" rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Dashboard
+              </Link>
+            )}
           </div>
         </nav>
         <Dialog
